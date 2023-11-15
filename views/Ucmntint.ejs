@@ -1,0 +1,513 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="/stylesheets/img.css" rel="stylesheet">
+
+</head>
+
+<style>
+    .likes_card {
+        position: fixed;
+        top: 0;
+        width: 70%;
+        height: 100%;
+        z-index: 9999999999999;
+        display: flex;
+        /* align-items: center;
+      justify-content: center; */
+        background-color: #ffffff3a;
+        background-color: transparent;
+        margin-left: 15vw;
+        /* display: none; */
+        pointer-events: none;
+    }
+
+    #likes_container {
+        width: 25vw;
+        height: 50vh;
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 5px #333;
+        z-index: 999999;
+        overflow-x: hidden;
+        overflow-y: auto;
+    }
+
+    .likes_user {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 0 1vw;
+        padding-top: 10px;
+    }
+
+    .likes_user h6 {
+        font-size: 15px;
+        margin-top: 5px;
+    }
+
+    .likes_nav {
+        width: 100%;
+        height: 12%;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        padding-right: 20px;
+        border-bottom: 1px solid #333;
+    }
+
+    .likes_det {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .likes_det .likes_img {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rebeccapurple;
+        overflow: hidden;
+    }
+
+    .likes_det .likes_img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .likes_button {
+        background-color: #dadada;
+        width: fit-content;
+        padding: 1px 10px;
+        border-radius: 7px;
+        font-size: 12px;
+
+    }
+
+    .likes_card span {
+        font-size: 10px !important;
+        color: #0094f7;
+
+    }
+
+    .head_container {
+        display: flex;
+        align-items: center;
+        gap: 100px;
+    }
+
+    .head_container h6 {
+        font-size: 20px;
+    }
+
+    #likes_close {
+        font-size: 22px;
+        color: #000;
+    }
+
+    #follow {
+        padding: 5px 10px !important;
+    }
+
+    #delete_comment {
+        /* opacity: 0; */
+        font-size: 16px;
+        margin-left: 5px;
+    }
+
+    .comment_card:hover #delete_comment {
+        opacity: 1;
+    }
+
+    .createpost .archive {
+        position: relative;
+        width: 70%;
+        height: 80%;
+        border: 1px solid #2f2f2f;
+        display: flex;
+    }
+
+    .createpost .archive .al1 {
+        width: 25%;
+        height: 100%;
+        /* border: 1px solid #fff; */
+        border-right: 1px solid #2f2f2f;
+    }
+
+    .createpost .archive .altop {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 30px;
+        width: 100%;
+        height: 10%;
+        /* border: 1px solid #fff; */
+        /* background-color: red; */
+        border-bottom: 1px solid #2f2f2f;
+    }
+
+    .createpost .archive .albtm {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        width: 100%;
+        height: 90%;
+        /* border: 1px solid #fff; */
+    }
+
+    .createpost .archive .btmr {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        width: 100%;
+        /* background-color: teal; */
+        height: 20vh;
+        padding: 20px 0;
+        padding-left: 20px;
+        /* border: 1px solid #fff; */
+    }
+
+
+    .createpost .archive .btmr h6 {
+        font-size: 17px;
+        font-weight: 400 !important;
+        letter-spacing: 1px;
+        color: #d7ddc2;
+        color: #fff;
+        margin-top: 5px;
+        margin-bottom: -1px;
+    }
+
+    .createpost .archive .btmr i {
+        font-size: 20px;
+        color: #d7ddc2;
+        color: #fff;
+    }
+
+    #arch {
+        border-left: 3px solid #fff;
+    }
+
+    .createpost .archive .ar1 {
+        padding: 0 15px;
+        width: 75%;
+        height: 100%;
+        /* border: 1px solid #fff; */
+        border-right: 1px solid #2f2f2f;
+    }
+
+    .alt1 {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        height: 100%;
+        height: 9vh;
+        /* background-color: #fff; */
+        /* background-color: teal; */
+        padding: 0 15px;
+        /* background-color: red; */
+    }
+
+    .alt1 i {
+        font-size: 18px;
+    }
+
+    .alt1 h6 {
+        font-size: 15px;
+        margin-top: 7px;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        font-weight: 400;
+    }
+
+    #astories {
+        border-bottom: 1px solid #fff;
+    }
+
+    .arbtm {
+        width: 100%;
+        display: flex;
+        flex-direction: column !important;
+        gap: 15px !important;
+        gap: 4px;
+        max-height: 70vh !important;
+        overflow-y: auto !important;
+        padding-top: 40px;
+        overflow-y: auto !important;
+    }
+    .cmnt_div{
+        width: 100% !important;
+        flex-shrink: 0 !important;
+    }
+    .arbtm .photu {
+        width: 50px;
+        height: 50px;
+        overflow: hidden;
+        border-radius: 50%;
+        background-color: thistle;
+        flex-shrink: 0;
+         position: relative;
+    }
+    .arbtm::-webkit-scrollbar{
+        display: none;
+    }
+    #ric{
+        position: absolute;
+        right: 2%;
+        top: 1%;
+    }
+
+    .arbtm .photu img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    .arbtm .photu video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    p {
+        color: #4f5257;
+        font-size: 12px;
+        line-height: 1;
+        font-weight: 600;
+        width: 70%;
+        margin-top: 4px;
+    }
+    .Crow{
+        padding: 0 20px;
+        /* background-color: red; */
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-shrink: 0 !important;
+    }
+    .Crow .Utxt h5{
+         font-size: 15px;
+         /* margin-bottom: -2px; */
+    }
+    .Crow .Utxt{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content:center;
+        /* background-color: teal; */
+    }
+    .Crow .Utxt h6{
+         font-size: 14px;
+         /* margin-bottom: -2px; */
+    }
+    .Crow .Utxt p{
+         font-size: 12px;
+    }
+    .post{
+        width: 70px;
+        height: 70px;
+        background-color: teal;
+    }
+    .post img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .post video{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .post_owner{
+        display: flex;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    .who_pic{
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: red;
+    }
+    .name{
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    .name h6{
+        white-space: nowrap;
+    }
+    .who_comment{
+        display: flex !important;
+        gap: 10px;
+        padding-left: 60px;
+    }
+    .who_pic img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+    .cmnt_div p{
+        color: #fff;
+        white-space: nowrap;
+    }
+   
+</style>
+
+<body>
+    <div id="main">
+        <% include ./partials/navbar.ejs %>
+
+            <div class="createpost">
+                <div class="archive">
+                    <div class="al1">
+                        <div class="altop">
+                             <h6>Your activity</h6>
+                        </div>
+                        <div class="albtm">
+                            <a href="/archive">
+                                <div class="btmr">
+                                    <i class="ri-timer-2-line"></i>
+                                    <div class="txtb">
+                                        <h6>Stories archive</h6>
+                                        <p>Your previous stories.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div id="arch" class="btmr">
+                                    <svg aria-label="Interactions, review and delete likes, comments and your other interactions."
+                                        class="_ab6-" color="rgb(245, 245, 245)" fill="rgb(245, 245, 245)" height="24"
+                                        role="img" viewBox="0 0 24 24" width="24">
+                                        <line fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5" x1="2.369" x2="22.25" y1="16.803"
+                                            y2="16.803"></line>
+                                        <polyline fill="none" points="17.322 11.855 22.25 16.803 17.322 21.75"
+                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"></polyline>
+                                        <line fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5" x1="21.631" x2="1.75" y1="7.197"
+                                            y2="7.197"></line>
+                                        <polyline fill="none" points="6.678 12.145 1.75 7.197 6.678 2.25"
+                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"></polyline>
+                                    </svg>
+                                    <div class="txtb">
+                                        <h6>Interactions</h6>
+                                        <p>Likes comments and your ither interections.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="/P&V">
+                                <div class="btmr">
+                                    <svg aria-label="Photos and videos, view, archive, or delete photos you've shared."
+                                        class="_ab6-" color="rgb(245, 245, 245)" fill="rgb(245, 245, 245)" height="24"
+                                        role="img" viewBox="0 0 24 24" width="24">
+                                        <path
+                                            d="m18.509 14.757-4.285-2.474a.857.857 0 0 0-1.286.743v4.948a.857.857 0 0 0 1.286.742l4.285-2.474a.857.857 0 0 0 0-1.485ZM5.225 3.977a1.25 1.25 0 1 0 1.25 1.25 1.25 1.25 0 0 0-1.25-1.25ZM19.5 7.5h-3v-3a4.004 4.004 0 0 0-4-4h-8a4.004 4.004 0 0 0-4 4v8a4.004 4.004 0 0 0 4 4h3v3a4.004 4.004 0 0 0 4 4h8a4.004 4.004 0 0 0 4-4v-8a4.004 4.004 0 0 0-4-4Zm-12 7h-3a1.997 1.997 0 0 1-1.882-1.349l2.607-2.607L7.5 12.819Zm.23-4.28L6.41 8.9a1.679 1.679 0 0 0-2.37 0L2.5 10.44V4.5a2.003 2.003 0 0 1 2-2h8a2.003 2.003 0 0 1 2 2v3h-3a3.992 3.992 0 0 0-3.77 2.72ZM21.5 19.5a2.003 2.003 0 0 1-2 2h-8a2.003 2.003 0 0 1-2-2v-8a2.003 2.003 0 0 1 2-2h8a2.003 2.003 0 0 1 2 2Z">
+                                        </path>
+                                    </svg>
+                                    <div class="txtb">
+                                        <h6>Photos and videos</h6>
+                                        <p>View archive or delete photos and videos you've shared.</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="ar1">
+                        <div class="altop">
+
+                            <a href="/intrect">
+                                <div  class="alt1">
+                                    <i class="ri-heart-line"></i>
+                                    <h6>Likes</h6>
+                                </div>
+                            </a>
+                            <a href="/cmntint">
+                                <div id="astories" class="alt1">
+                                    <i class="ri-chat-1-line"></i>
+                                    <h6>Comments</h6>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="arbtm">
+
+                            <% user.Comment.forEach(function(cmnt){ %>
+                           <% }) %>
+                           <% allp.forEach(function(all){ %>
+                                 <% all.comment.forEach(function(cmt){ %>
+                                    <% if(cmt.owner.name === user.name){ %>
+                                        <a href="#">
+                                            <div class="cmnt_div">
+                                                <div class="Crow">
+                                                    <div class="post_owner">
+                                                         <div class="photu">
+                                                              <img src="/getFile/<%= all.owner.userProfileimg %>" alt="">
+                                                         </div>
+                                                         <div class="Utxt">
+                                                             <h5><%= all.owner.username %></h5>
+                                                             <h6>post Caption</h6>
+                                                             <p>time</p>
+                                                         </div>
+                                                    </div>
+                                                     <div class="post">
+                                                        <% if(all.post.ext==="mp4" ){ %>
+                                                            <div id="ric" data-bloks-name="ig.components.Icon" class="wbloks_1"
+                                                                style="-webkit-mask-image: url(&quot;https://i.instagram.com/static/images/bloks/icons/generated/reels__filled__32-4x.png/981c16cfbd37.png&quot;); -webkit-mask-size: contain; background-color: rgb(255, 255, 255); flex-shrink: 0; width: 40px; height: 40px;">
+                                                            </div>
+                                                            <video id="homevideo" autoplay muted loop
+                                                                src="/getpost/<%= all.post %>"></video>
+                                                            <i id="pauseVideo" class="ri-play-fill" style="opacity: 1;"></i>
+                                                            <% } else{ %>
+                                                                <img src="/getpost/<%= all.post %>" alt="">
+                                                            <% } %>
+                                                     </div>
+                                                 </div>
+                                                 <div class="who_comment">
+                                                    <div class="who_pic">
+                                                        <img src="/getFile/<%= cmt.owner.userProfileimg %>" alt="">
+                                                    </div>
+                                                    <div class="cmnttxt">
+                                                          <div class="name">
+                                                               <h6><%= cmt.owner.username %></h6>
+                                                               <p><%= cmt.data %></p>
+                                                          </div>
+                                                          <h6>time</h6>
+                                                    </div>
+                                                 </div>
+                                            </div>
+                                        </a> 
+                                    <% }else{ %>
+                                    <% } %>
+                                 <% }) %>
+                           <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js"
+        integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

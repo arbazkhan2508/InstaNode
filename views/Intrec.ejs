@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
+    <link href="/stylesheets/img.css" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/img.css">
+  <link rel="stylesheet" href="/stylesheets/ar.css">
+
+</head>
+
+
+<body>
+    <div id="main">
+        <% include ./partials/navbar.ejs %>
+
+            <div class="createpost">
+                <div class="archive">
+                    <div class="al1">
+                        <div class="altop">
+                            <h6>Your Activity</h6>
+                        </div>
+                        <div class="albtm">
+                            <a href="/archive">
+                                <div class="btmr">
+                                    <i class="ri-timer-2-line"></i>
+                                    <div class="txtb">
+                                        <h6>Stories archive</h6>
+                                        <p>Your previous stories.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="#">
+                                <div id="arch" class="btmr">
+                                    <svg aria-label="Interactions, review and delete likes, comments and your other interactions."
+                                        class="_ab6-" color="rgb(245, 245, 245)" fill="rgb(245, 245, 245)" height="24"
+                                        role="img" viewBox="0 0 24 24" width="24">
+                                        <line fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5" x1="2.369" x2="22.25" y1="16.803"
+                                            y2="16.803"></line>
+                                        <polyline fill="none" points="17.322 11.855 22.25 16.803 17.322 21.75"
+                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"></polyline>
+                                        <line fill="none" stroke="currentColor" stroke-linecap="round"
+                                            stroke-linejoin="round" stroke-width="1.5" x1="21.631" x2="1.75" y1="7.197"
+                                            y2="7.197"></line>
+                                        <polyline fill="none" points="6.678 12.145 1.75 7.197 6.678 2.25"
+                                            stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                            stroke-width="1.5"></polyline>
+                                    </svg>
+                                    <div class="txtb">
+                                        <h6>Interactions</h6>
+                                        <p>Likes comments and your ither interections.</p>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="/P&V">
+                                <div class="btmr">
+                                    <svg aria-label="Photos and videos, view, archive, or delete photos you've shared."
+                                        class="_ab6-" color="rgb(245, 245, 245)" fill="rgb(245, 245, 245)" height="24"
+                                        role="img" viewBox="0 0 24 24" width="24">
+                                        <path
+                                            d="m18.509 14.757-4.285-2.474a.857.857 0 0 0-1.286.743v4.948a.857.857 0 0 0 1.286.742l4.285-2.474a.857.857 0 0 0 0-1.485ZM5.225 3.977a1.25 1.25 0 1 0 1.25 1.25 1.25 1.25 0 0 0-1.25-1.25ZM19.5 7.5h-3v-3a4.004 4.004 0 0 0-4-4h-8a4.004 4.004 0 0 0-4 4v8a4.004 4.004 0 0 0 4 4h3v3a4.004 4.004 0 0 0 4 4h8a4.004 4.004 0 0 0 4-4v-8a4.004 4.004 0 0 0-4-4Zm-12 7h-3a1.997 1.997 0 0 1-1.882-1.349l2.607-2.607L7.5 12.819Zm.23-4.28L6.41 8.9a1.679 1.679 0 0 0-2.37 0L2.5 10.44V4.5a2.003 2.003 0 0 1 2-2h8a2.003 2.003 0 0 1 2 2v3h-3a3.992 3.992 0 0 0-3.77 2.72ZM21.5 19.5a2.003 2.003 0 0 1-2 2h-8a2.003 2.003 0 0 1-2-2v-8a2.003 2.003 0 0 1 2-2h8a2.003 2.003 0 0 1 2 2Z">
+                                        </path>
+                                    </svg>
+                                    <div class="txtb">
+                                        <h6>Photos and videos</h6>
+                                        <p>View archive or delete photos and videos you've shared.</p>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                    </div>
+                    <div class="ar1">
+                        <div class="altop">
+
+                            <a href="#">
+                                <div id="astories" class="alt1">
+                                    <i class="ri-heart-line"></i>
+                                    <h6>Likes</h6>
+                                </div>
+                            </a>
+                            <a href="/cmntint">
+                                <div class="alt1">
+                                    <i class="ri-chat-1-line"></i>
+                                    <h6>Comments</h6>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="arbtm">
+                            <% user.likes.forEach(function(likes){ %>
+
+                                <% var flw=user.posts %>
+                                    <% if (flw.some(ef=> ef._id.equals(likes._id))) { %>
+                                        <% } else { %>
+                                            <a href="#">
+                                                <div class="photu">
+                                                    <% if(likes.ext==="mp4" ){ %>
+                                                        <div id="ric" data-bloks-name="ig.components.Icon" class="wbloks_1"
+                                                            style="-webkit-mask-image: url(&quot;https://i.instagram.com/static/images/bloks/icons/generated/reels__filled__32-4x.png/981c16cfbd37.png&quot;); -webkit-mask-size: contain; background-color: rgb(255, 255, 255); flex-shrink: 0; width: 40px; height: 40px;">
+                                                        </div>
+                                                        <video id="homevideo" autoplay muted loop
+                                                            src="/getpost/<%= likes.post %>"></video>
+                                                        <!-- <i id="pauseVideo" class="ri-play-fill" style="opacity: 1;"></i> -->
+                                                        <% } else{ %>
+                                                            <img src="/getpost/<%= likes.post %>" alt="">
+                                                            <% } %>
+
+                                                </div>
+                                            </a>
+                                        <% } %>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.3.2/axios.min.js"
+        integrity="sha512-NCiXRSV460cHD9ClGDrTbTaw0muWUBf/zB/yLzJavRsPNUl9ODkUVmUHsZtKu17XknhsGlmyVoJxLg/ZQQEeGA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+        crossorigin="anonymous"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,68 @@
+<!-- home.ejs -->
+
+
+<!-- home.ejs -->
+<html>
+<body>
+  <h1>Home Page</h1>
+  <% posts.forEach(post => { %>
+    <div>
+      <h2><%= post.title %></h2>
+      <img style="width: 30vh;height: 30vh;object-fit: cover;" src="/getpost/<%= post.post %>" alt="">
+      <p><%= post.content %></p>
+    </div>
+  <% }); %>
+
+  <% if (totalPages > 1) { %>
+    <div>
+      <% if (currentPage > 1) { %>
+        <a href="/home?page=<%= currentPage - 1 %>">Previous</a>
+      <% } %>
+
+      <% if (currentPage < totalPages) { %>
+        <a href="/home?page=<%= currentPage + 1 %>">Next</a>
+      <% } %>
+    </div>
+  <% } %>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <html>
+<body>
+  <h1>Home Page</h1>
+  <%= posts.length %>
+  <% posts.forEach(post => { %>
+    <div style="width: 100%;display: flex !important;background-color: yellow;">
+      <h2><%= post %></h2>
+      <img style="width: 30vh;height: 30vh;object-fit: cover;" src="/getpost/<%= post.post %>" alt="">
+      <p><%= post.post %></p>
+    </div>
+  <% }); %>
+
+  <%= currentPage %>
+  <%= totalPages %>
+  <% if (totalPages > 1) { %>
+    <div>
+      <% if (currentPage > 1) { %>
+        <a href="/home/<%= currentPage - 1 %>">Previous</a>
+      <% } %>
+
+      <% if (currentPage < totalPages) { %>
+        <a href="/home/<%= currentPage + 1 %>">Next</a>
+      <% } %>
+    </div>
+  <% } %>
+</body>
+</html> -->

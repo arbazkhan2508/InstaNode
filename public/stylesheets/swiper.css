@@ -1,0 +1,192 @@
+
+
+
+
+.nav{
+    position: relative;
+    position: fixed;
+    top: 0;
+    padding: 3vw 0;
+    width: 15%;
+    height: 100vh;
+    border-right: 1px solid #666;
+    color: #fff !important;
+    background-color: #000;
+}
+.nav .form{
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)1s;
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    transform: translate(-50%,0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:90%;
+    height:25vh;
+    background-color: #fff;
+    box-shadow: 0 0 5px #000;
+}
+.form .r1 a{
+    display: inline-block;
+}
+.form .r1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 7vh;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.form .r1:nth-child(2){
+    border-bottom: none;
+}
+.form .r1:nth-child(1){
+    border-bottom: none;
+}
+.form .r1 a{
+    text-decoration: none;
+    color: #000;
+}
+
+.rows{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+}
+.rows .r1{
+    padding: 0 2vw;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 15px;
+    width: 100%;
+    height: 5vh;
+    text-align: left;
+    color: #fff !important;
+    margin-top: 10px;
+}
+.rows a{
+   text-decoration: none;
+   color: #000;
+   text-transform: capitalize;
+
+}
+.r1 i{
+    font-size: 2vw;
+}
+.rows .circle{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1.5px solid #000;
+}
+.circle img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+
+
+
+
+
+
+/* profile */
+
+
+
+.nav{
+    position: relative;
+    position: fixed;
+    top: 0;
+    padding: 3vw 0;
+    width: 15%;
+    height: 100vh;
+    border-right: 1px solid #666;
+    background-color: #111;
+}
+.nav .form{
+    transition: all cubic-bezier(0.19, 1, 0.22, 1)1s;
+    position: absolute;
+    bottom: -30%;
+    left: 50%;
+    transform: translate(-50%,0);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width:90%;
+    height:25vh;
+    background-color: #fff;
+    box-shadow: 0 0 5px #000;
+}
+.form .r1 a{
+    display: inline-block;
+}
+.form .r1{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 90%;
+    height: 7vh;
+    border-top: 1px solid #000;
+    border-bottom: 1px solid #000;
+}
+.form .r1:nth-child(2){
+    border-bottom: none;
+}
+.form .r1:nth-child(1){
+    border-bottom: none;
+}
+.form .r1 a{
+    text-decoration: none;
+    color: #000;
+}
+.rows{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+}
+.rows .r1{
+    padding: 0 2vw;
+    display: flex;
+    align-items: center;
+    justify-content:flex-start;
+    gap: 15px;
+    width: 100%;
+    height: 5vh;
+    text-align: left;
+    color: #fff;
+}
+.rows a{
+   text-decoration: none;
+   color: #000;
+   text-transform: capitalize;
+
+}
+.r1 i{
+    font-size: 2vw;
+}
+.rows .circle{
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 1.5px solid #000;
+}
+.circle img{
+    width: 100%;
+    height: 130%;
+    object-fit: cover;
+    object-position: center;
+} 
